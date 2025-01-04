@@ -1,10 +1,12 @@
-FROM ubuntu:latest
+ARG UBUNTU_VERSION="noble"
+
+FROM ubuntu:${UBUNTU_VERSION}
 
 ARG BUILD_SERVER_NAME="services.lame-network.local"
 
 RUN apt -y update
 
-RUN apt -y install coreutils perl git automake autoconf build-essential libpcre2-dev rapidjson-dev libcurl4-gnutls-dev libargon2-dev libmaxminddb-dev libldap2-dev rapidjson-dev libmysqlclient-dev libmysqlclient-dev default-libmysqlclient-dev libpq-dev libre2-dev gnutls-dev libsqlite3-dev libmbedtls-dev libqrencode-dev libpcre3-dev libtre-dev pkg-config libwww-perl libidn-dev libpasswdqc-dev libcrack2-dev libperl-dev libsodium-dev cracklib-runtime libcrypt-cracklib-perl sendmail
+RUN apt -y install coreutils perl git automake autoconf build-essential libpcre2-dev rapidjson-dev libcurl4-gnutls-dev libargon2-dev libmaxminddb-dev libldap2-dev rapidjson-dev libmysqlclient-dev libmysqlclient-dev default-libmysqlclient-dev libpq-dev libre2-dev gnutls-dev libsqlite3-dev libmbedtls-dev libqrencode-dev libpcre3-dev libtre-dev pkg-config libwww-perl libidn-dev libpasswdqc-dev libcrack2-dev libperl-dev libsodium-dev cracklib-runtime libcrypt-cracklib-perl sendmail gettext
 
 RUN groupadd atheme
 
@@ -12,7 +14,7 @@ RUN useradd --system --shell /bin/bash atheme -g atheme
 
 WORKDIR /tmp
 
-RUN git clone https://github.com/paigeadelethompson/atheme.git -b inspircd
+RUN git clone https://github.com/atheme/atheme.git -b master
 
 WORKDIR /tmp/atheme
 
@@ -33,13 +35,6 @@ RUN ln -sf /etc/atheme /usr/local/etc
 ADD atheme.conf /etc/atheme
 
 ADD include.default.conf /etc/atheme/include.conf
-
-RUN openssl genrsa -out /etc/ssl/atheme/server.key
-
-RUN openssl req -new -key /etc/ssl/atheme/server.key -out /etc/ssl/atheme/server.csr \
-    -subj "/C=US/ST=Washington/L=Seattle/O=LameNetwork/OU=IT Department/CN=$BUILD_SERVER_NAME"
-
-RUN openssl x509 -req -days 365 -in /etc/ssl/atheme/server.csr -signkey /etc/ssl/atheme/server.key -out /etc/ssl/atheme/server.crt
 
 RUN chown -R atheme:atheme /etc/atheme /etc/ssl/atheme /var/log/atheme
 

@@ -1,0 +1,11 @@
+foreground = yes
+
+[PKI client]
+client = yes
+accept = 127.0.0.1:6000
+connect = 1.2.3.4:7777
+verifyChain = yes
+CAfile = /ca.crt
+cert = /server.crt
+key = /server.key
+checkHost = hub.lame-network.local
