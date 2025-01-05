@@ -1,10 +1,11 @@
 # Instructions 
 
 ## Remote with TLS
-since atheme doesn't support TLS uplinks, stunnel has to be used for remote TLS encryption (this assumes stunnel is running on the hub already):
+since atheme doesn't support TLS uplinks, (https://github.com/atheme/atheme/issues/265) stunnel has to be used for remote TLS 
+encryption (this assumes stunnel is running on the hub already):
 - `cd stunnel/`
 - Copy `stunnel.conf.example` to `stunnel.conf` then edit
-- retrieve certificates from CA `see inspircd hub CA setup with easyrsa3`
+- retrieve certificates from CA `see inspircd hub CA setup with easyrsa3`, place `ca.crt` in `ssl/`
 - `docker-compose up -d`
 
 ## docker-compose 
