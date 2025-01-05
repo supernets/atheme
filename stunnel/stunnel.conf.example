@@ -3,9 +3,7 @@ foreground = yes
 [PKI client]
 client = yes
 accept = 127.0.0.1:6000
-connect = 1.2.3.4:7777
-verifyChain = yes
+connect = 100.79.209.72:7777
 CAfile = /ca.crt
-cert = /server.crt
-key = /server.key
-checkHost = hub.lame-network.local
+verifyChain = yes
+checkHost = super-temple.lame-server.local

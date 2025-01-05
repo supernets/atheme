@@ -20,7 +20,7 @@ WORKDIR /tmp/atheme
 
 RUN git submodule update --init --recursive
 
-RUN ./configure --prefix=/usr/local --enable-large-net --enable-contrib --enable-legacy-pwcrypto
+RUN ./configure --prefix=/usr/local --enable-large-net --enable-contrib --enable-legacy-pwcrypto --enable-contrib
 
 RUN make -j$(nproc) 
 
@@ -50,4 +50,4 @@ VOLUME /etc/ssl/atheme
 
 VOLUME /var/log/atheme
 
-ENTRYPOINT ["/usr/local/bin/atheme-services", "-p", "/tmp/atheme.pid", "-n", "-d"]
+ENTRYPOINT ["/usr/local/bin/atheme-services", "-p", "/tmp/atheme.pid", "-n"]
