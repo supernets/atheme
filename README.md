@@ -14,5 +14,9 @@ encryption (this assumes stunnel is running on the hub already):
 - `docker-compose build`
 - `docker-compose up -d`
 
-## Anope migration 
+## Administration
+- To enable debugging add `-d` to `DAEMON_FLAGS` in `config.env`
+- `docker-compose up -d`
+- `docker logs -f atheme-atheme-1`
+### Anope migration 
 See `tools/` for `anope2atheme.php`. YMMV
