@@ -20,7 +20,7 @@ WORKDIR /tmp/atheme
 
 RUN git submodule update --init --recursive
 
-RUN ./configure --prefix=/usr/local --enable-large-net --enable-contrib --enable-legacy-pwcrypto --enable-contrib
+RUN ./configure --prefix=/usr/local --enable-large-net --enable-contrib --enable-legacy-pwcrypto --with-idn
 
 RUN make -j$(nproc) 
 
