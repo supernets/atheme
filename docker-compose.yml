@@ -5,6 +5,7 @@ services:
         args:
             BUILD_SERVER_NAME: ${SERVER_NAME}
     image: atheme
+    command: ${DAEMON_FLAGS}
     network_mode: "host"
     env_file: "config.env"
     volumes:
