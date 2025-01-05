@@ -32,21 +32,21 @@ RUN mv /usr/local/etc /usr/local/etc_old
 
 RUN ln -sf /etc/atheme /usr/local/etc
 
-ADD atheme.conf /etc/atheme
+ADD data/atheme.conf /etc/atheme
 
-ADD include.default.conf /etc/atheme/include.conf
+ADD data/include.default.conf /etc/atheme/include.conf
 
 RUN chown -R atheme:atheme /etc/atheme /etc/ssl/atheme /var/log/atheme
 
 WORKDIR /
+
+RUN rm -rf /tmp/atheme
 
 USER atheme 
 
 RUN /usr/local/bin/atheme-services -b ; true
 
 VOLUME /etc/atheme
-
-VOLUME /etc/ssl/atheme
 
 VOLUME /var/log/atheme
 

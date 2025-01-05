@@ -6,9 +6,9 @@ services:
     image: stunnel
     network_mode: "host"
     volumes:
-      - ../custom/ca.crt:/ca.crt:ro
-      - ../custom/server.crt:/server.crt:ro
-      - ../custom/server.key:/server.key:ro
+      - ../ssl/ca.crt:/ca.crt:ro
+      - ../ssl/server.crt:/server.crt:ro
+      - ../ssl/server.key:/server.key:ro
       - ./stunnel.conf:/etc/stunnel/stunnel.conf:ro
     ulimits:
       nofile:
