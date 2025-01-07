@@ -20,3 +20,8 @@ encryption (this assumes stunnel is running on the hub already):
 - `docker logs -f atheme-atheme-1`
 ### Anope migration 
 See `tools/` for `anope2atheme.php`. YMMV
+
+### Resetting passwords 
+- `/oper`
+- `/msg nickserv resetpass <nick>` this gives a temporary password for the user
+- as the user: `/msg nickserv identify <temporary password` then `/msg nickserv set password <new password>`
